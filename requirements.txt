@@ -1,0 +1,7 @@
+typing
+fastapi
+pydantic
+sqlalchemy
+sqlalchemy.ext.declarative
+sqlalchemy.orm
+bcrypt
