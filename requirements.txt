@@ -1,2 +1,7 @@
 fastapi ~= 0.103
 uvicorn[standard]
+pydantic[standard]
+sqlalchemy[standard]
+sqlalchemy.ext.declarative[standard]
+sqlalchemy.orm[standard]
+bcrypt[standard]
