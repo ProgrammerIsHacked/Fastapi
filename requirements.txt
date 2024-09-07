@@ -1,5 +1,6 @@
 fastapi ~= 0.103
 uvicorn[standard]
 pydantic[standard]
+pydantic[email]
 sqlalchemy[standard]
 bcrypt[standard]
