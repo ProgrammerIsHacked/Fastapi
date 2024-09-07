@@ -1,7 +1,2 @@
-typing
-fastapi
-pydantic
-sqlalchemy
-sqlalchemy.ext.declarative
-sqlalchemy.orm
-bcrypt
+fastapi ~= 0.103
+uvicorn[standard]
