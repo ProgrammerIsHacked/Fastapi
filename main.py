@@ -6,6 +6,7 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker, Session
 import bcrypt
 
+
 DATABASE_URL = "sqlite:///./users.db"
 
 engine = create_engine(DATABASE_URL)
@@ -18,6 +19,13 @@ class User(Base):
     name = Column(String, index=True)
     email = Column(String, unique=True, index=True)
     password = Column(String)
+
+class Reminders(Base):
+    __tablename__ = "reminder"
+    id = Column(Integer, primary_key=True, index=True)
+    name = Column(String, index=True)
+    description = Column(String, index=True)
+    time = Column(Integer, primary_key=True, index=True)
 
 Base.metadata.create_all(bind=engine)
 
@@ -106,6 +114,7 @@ def login(user: UserLogin, db: Session = Depends(get_db)):
         raise HTTPException(status_code=400, detail="Invalid email or password")
     return {"message": "Login successful"}
 
-@app.get("/reminders")
-def reminders():
-    return {"succes"}
+@app.get("/reminders", response_model=List[Reminders])
+def get_reminders(db: Session = Depends(get_db)):
+    reminders = db.query(Reminders).all()
+    return reminders
